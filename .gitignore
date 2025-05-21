@@ -1,0 +1,3 @@
+# files to be ignoreed by git
+.env
+history.txt

@@ -1,0 +1,14 @@
+Prompt to Recreate clone-github-user-repos in Nushell
+In Nushell, write a function that clones all public GitHub repositories of a specified user into a directory named after the user under the home directory (~). Create symbolic links in ~/git for each repository with the naming format username--reponame. Implement a completion system for the username parameter using a cache file (~/.github_username_cache) to store previously used usernames, suggesting cached usernames during input. Use a GitHub personal access token loaded from ~/.env (key GITHUB_TOKEN) for authenticated API requests, falling back to unauthenticated requests if no token is present. After cloning, scan ~/git for links matching the username--reponame format, fetch the number of GitHub stars for each repository using the authenticated API, and create a file ~/git/github-stars containing a table with columns repo (in username--reponame format) and stars. Handle API errors by recording 0 stars for failed requests and provide user-friendly error messages for failed API calls.
+Ensure the function uses correct Nushell syntax:
+
+Use not ($value in $list) for membership testing.
+Use string@"nu-complete completer-name" for completion syntax.
+Define the completion function with def --env "nu-complete completer-name" [].
+
+Handle file and directory creation robustly, skip cloning if the repository exists, and skip linking if the link exists. Save the script to ~/.config/nushell/clone-user-repos.nu and ensure it can be sourced from ~/.config/nushell/config.nu.
+# Example usage:
+# clone-github-user-repos "usernm"
+# open ~/git/github-stars | table
+
+
