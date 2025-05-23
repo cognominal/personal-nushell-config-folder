@@ -1,4 +1,9 @@
 alias pu = pushd
 alias po = popd
-alias ca = cat ~/.config/nushell/aliases.nu
 alias sc = scope
+alias ca = cat ~/.config/nushell/aliases.nu
+# alias sa = source  ~/.config/nushell/aliases.nu
+alias ea = nvim ~/.config/nushell/aliases.nu
+alias gc = git clone
+alias i  = code-insiders
+alias ia = ipconfig getifaddr en0
